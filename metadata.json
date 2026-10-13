@@ -1,0 +1,6 @@
+{
+  "name": "BoxSync Core - Decentralized ObjectBox Sync & CRDT Binary Protocol Engine",
+  "description": "Reverse-engineered decentralized object database synchronization engine inspired by ObjectBox Sync. Features binary transaction logs, zero-copy wire protocol, field-level CRDTs (HLC LWW, PN-Counter, OR-Set), offline-first resilience, and low-latency mobile peer replication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
