@@ -9,24 +9,58 @@
 
 ---
 
-## 📦 Installation Directe (Bibliothèque pub.dev Flutter)
+## 📦 Utiliser FreeBoxSync via votre Dépôt GitHub dans vos Applications Flutter
 
-Pour ajouter la bibliothèque à votre projet Flutter en une commande :
+Vous pouvez utiliser cette bibliothèque directement depuis votre dépôt GitHub comme dépendance dans n'importe quelle autre application Flutter :
 
-```bash
-flutter pub add freebox_sync
-```
-
-Ou en dépendance locale / Git dans votre `pubspec.yaml` :
+### Dans le `pubspec.yaml` de votre autre projet Flutter :
 
 ```yaml
 dependencies:
-  objectbox: ^4.0.0
+  flutter:
+    sdk: flutter
+  objectbox: ^4.0.0 # Base embarquée ObjectBox gratuite
+
+  # Votre bibliothèque FreeBoxSync depuis votre GitHub :
   freebox_sync:
-    path: ./packages/freebox_sync # ou git: https://github.com/freeboxsync/freebox_sync.git
+    git:
+      url: https://github.com/VOTRE_PSEUDO/NOM_DE_VOTRE_REPO.git
+      ref: main
+      # Si vous avez poussé tout le projet, spécifiez le sous-dossier :
+      # path: packages/freebox_sync
 ```
 
-> **Code source complet du package pub.dev disponible dans :** [`/packages/freebox_sync/`](./packages/freebox_sync)
+### Comment pousser le package sur votre dépôt GitHub :
+
+```bash
+# 1. Rendez-vous dans le dossier du package
+cd packages/freebox_sync
+
+# 2. Initialisez et poussez sur votre GitHub
+git init
+git add .
+git commit -m "feat: initial commit of freebox_sync package"
+git branch -M main
+git remote add origin https://github.com/VOTRE_PSEUDO/NOM_DE_VOTRE_REPO.git
+git push -u origin main
+```
+
+---
+
+## ❓ ObjectBox existe-t-il sous React ?
+
+> **Réponse courte : Non, ObjectBox n'existe pas pour React / Web.**
+>
+> **Pourquoi ?** ObjectBox est un moteur ultra-rapide écrit en **C++** reposant sur des fichiers mappés directement en mémoire (**LMDB / B-Tree**). Les navigateurs web (Chrome, Safari, Firefox) s'exécutent dans un bac à sable sécurisé interdisant l'accès direct bas niveau au système de fichiers.
+>
+> **Plateformes officiellement supportées par ObjectBox :**
+> * ✅ **Flutter** (Android, iOS, macOS, Windows, Linux) — *Le choix n°1 recommandé*
+> * ✅ **Android natif** (Kotlin / Java)
+> * ✅ **iOS natif** (Swift)
+> * ✅ **Go** (Serveurs, Raspberry Pi, micro-relais)
+> * ✅ **C / C++** et **Python**
+>
+> Pour React / Web, il n'y a donc pas lieu de créer de bindings ObjectBox. Si vous avez besoin d'une interface React, elle peut interroger en WebSocket le petit relais local en Go ou l'un des téléphones Flutter du réseau local.
 
 ---
 

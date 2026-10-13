@@ -23,19 +23,53 @@ A free, decentralized peer-to-peer (P2P) local network sync engine for **ObjectB
 
 ## Installation
 
-Add `freebox_sync` to your `pubspec.yaml`:
+### Option A : Depuis votre Repo GitHub (Recommandé)
+
+Dans le `pubspec.yaml` de votre autre projet application Flutter :
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  objectbox: ^4.0.0
+
+  # Référence directe à votre dépôt GitHub :
+  freebox_sync:
+    git:
+      url: https://github.com/VOTRE_PSEUDO/freebox_sync.git
+      ref: main
+      # Note : Si le package est dans un sous-dossier de votre repo, ajoutez :
+      # path: packages/freebox_sync
+```
+
+### Option B : Depuis pub.dev (Une fois publié)
 
 ```bash
 flutter pub add freebox_sync
 ```
 
-Or manually:
+---
 
-```yaml
-dependencies:
-  objectbox: ^4.0.0
-  freebox_sync: ^1.0.0
+## 🚀 Comment pousser ce package sur votre Repo GitHub existant
+
+Si vous venez de créer un repo GitHub vide (ex: `https://github.com/VOTRE_PSEUDO/freebox_sync.git`) :
+
+```bash
+# 1. Allez dans le dossier du package
+cd packages/freebox_sync
+
+# 2. Initialisez le dépôt git
+git init
+git add .
+git commit -m "feat: initial commit of freebox_sync Flutter package"
+
+# 3. Liez à votre repo GitHub
+git branch -M main
+git remote add origin https://github.com/VOTRE_PSEUDO/freebox_sync.git
+git push -u origin main
 ```
+
+Dès que vous avez poussé, vous pouvez immédiatement l'importer dans tous vos autres projets Flutter avec la configuration `git:` ci-dessus !
 
 ---
 

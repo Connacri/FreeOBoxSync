@@ -30,19 +30,41 @@ export const FreeGuideView: React.FC = () => {
   const getCode = () => {
     switch (selectedLang) {
       case 'pubdev':
-        return `# pubspec.yaml
-name: mon_app_flutter
+        return `# ============================================================================
+# pubspec.yaml dans votre application Flutter
+# ============================================================================
+name: mon_application_flutter
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
 dependencies:
   flutter:
     sdk: flutter
-  objectbox: ^4.0.0              # Base embarquée gratuite
-  freebox_sync: ^1.0.0           # Bibliothèque de synchronisation LAN P2P gratuite
 
-# Installation en ligne de commande :
-# flutter pub add freebox_sync
+  # 1. Base ObjectBox locale (100% Gratuite) :
+  objectbox: ^4.0.0
+  objectbox_flutter_libs: any
 
-# Code source complet du package disponible dans :
-# /packages/freebox_sync/`;
+  # 2. Votre package FreeBoxSync depuis votre dépôt GitHub :
+  freebox_sync:
+    git:
+      url: https://github.com/VOTRE_PSEUDO/NOM_DE_VOTRE_REPO.git
+      ref: main
+      # Note : si le package est dans un sous-dossier, ajoutez :
+      # path: packages/freebox_sync
+
+  # OU si publié sur pub.dev :
+  # freebox_sync: ^1.0.0
+
+# Commandes Git pour pousser votre package vers GitHub :
+# cd packages/freebox_sync
+# git init
+# git add .
+# git commit -m "Initial commit of freebox_sync package"
+# git remote add origin https://github.com/VOTRE_PSEUDO/NOM_DE_VOTRE_REPO.git
+# git branch -M main
+# git push -u origin main`;
       case 'flutter':
         return FLUTTER_DART_CODE;
       case 'kotlin':
